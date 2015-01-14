@@ -8,12 +8,14 @@
 
 /* Begin PBXFileReference section */
 		272CC4671A65DBE0003A2BBF /* 2PlayerMathGame.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = 2PlayerMathGame.playground; sourceTree = "<group>"; };
+		27409B771A663A98003F836F /* ScratchPad.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ScratchPad.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		272CC4601A65DBB4003A2BBF = {
 			isa = PBXGroup;
 			children = (
+				27409B771A663A98003F836F /* ScratchPad.playground */,
 				272CC4671A65DBE0003A2BBF /* 2PlayerMathGame.playground */,
 			);
 			sourceTree = "<group>";
