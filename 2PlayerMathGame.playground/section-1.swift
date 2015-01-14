@@ -8,14 +8,20 @@ var player1Name = "Player 1"
 var player2Name = "Player 2"
 var gameRound = 1
 
+// Major Changes: Add a Player Struct, Player1 and Player2 are instances of that stuct
+
+
+
 
 // MARK: Random Number generators
 
 // Generate random number b/w 1 and 4 for 4 different math types
 
+
+
 func generateRandomNumberUpTo4() -> Int {
-    var randomNumber = Int(arc4random() % 4)+1
-    return randomNumber
+    //minor change: removed intermediate variable
+    return Int(arc4random() % 4)+1
 }
 
 // Generate random number b/w 1 and 20 for prompts / print line statements
@@ -51,6 +57,9 @@ func playGame (#firstPlayerName: String, #secondPlayerName: String) {
         // Player 1 takes turn implemented with Better Math (i.e. random math function)
         
         var randomNumber1 = generateRandomNumberUpTo20()
+        
+        //minor changes: can these be let instead?
+        
         var randomNumber2 = generateRandomNumberUpTo20()
         var randomMathType1 = generateRandomNumberUpTo4()
         var player1Answer = generateRandomNumberUpTo20()
@@ -137,5 +146,6 @@ func playGame (#firstPlayerName: String, #secondPlayerName: String) {
 
 playGame(firstPlayerName: "Mike", secondPlayerName: "John")
 
-playGame(firstPlayerName: "Sarah", secondPlayerName: "Dave")
+// Major Changes: Break playgame() into smaller functions, so that you can guess numbers and loose lives if right/wrong
 
+playGame(firstPlayerName: "Sarah", secondPlayerName: "Dave")
