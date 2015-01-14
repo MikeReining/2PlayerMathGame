@@ -43,15 +43,13 @@ func generateRandomNumberUpTo40() -> Int {
 
 // MARK: Play Game Logic
 
-func playGame (#firstPlayer: Player, #secondPlayer: Player) {
+func playGame (inout #firstPlayer: Player, inout #secondPlayer: Player) {
 
     println("STARTING NEW MATH GAME!")
     println("PLAYER 1 is: \(firstPlayer.Name)")
     println("PLAYER 2 is: \(secondPlayer.Name)")
-    var p1lives = firstPlayer.Lives
-    var p2lives = secondPlayer.Lives
     
-    while p1lives > 0 && p2lives > 0 {
+    while firstPlayer.Lives > 0 && secondPlayer.Lives > 0 {
         println(" ")
         println("This is round: \(gameRound)")
         
@@ -72,8 +70,8 @@ func playGame (#firstPlayer: Player, #secondPlayer: Player) {
             println("\(firstPlayer.Name) said: \(player1Answer)")
             println("The correct answer is: \(correctAnswer)")
             if player1Answer != correctAnswer {
-                p1lives -= 1
-                println("CURRENT SCORE: \(firstPlayer.Name) lives: \(p1lives) and \(secondPlayer.Name) lives: \(p2lives)")
+                firstPlayer.Lives -= 1
+                println("CURRENT SCORE: \(firstPlayer.Name) lives: \(firstPlayer.Lives) and \(secondPlayer.Name) lives: \(secondPlayer.Lives)")
             }
             
         case 2:
@@ -82,8 +80,8 @@ func playGame (#firstPlayer: Player, #secondPlayer: Player) {
             println("\(firstPlayer.Name) said: \(player1Answer)")
             println("The correct answer is: \(correctAnswer)")
             if player1Answer != correctAnswer {
-                p1lives -= 1
-                println("CURRENT SCORE: \(firstPlayer.Name) lives: \(p1lives) and \(secondPlayer.Name) lives: \(p2lives)")
+                firstPlayer.Lives -= 1
+                println("CURRENT SCORE: \(firstPlayer.Name) lives: \(firstPlayer.Lives) and \(secondPlayer.Name) lives: \(secondPlayer.Lives)")
             }
             
         case 3:
@@ -92,8 +90,8 @@ func playGame (#firstPlayer: Player, #secondPlayer: Player) {
             println("\(firstPlayer.Name) said: \(player1Answer)")
             println("The correct answer is: \(correctAnswer)")
             if player1Answer != correctAnswer {
-                p1lives -= 1
-                println("CURRENT SCORE: \(firstPlayer.Name) lives: \(p1lives) and \(secondPlayer.Name) lives: \(p2lives)")
+                firstPlayer.Lives -= 1
+                println("CURRENT SCORE: \(firstPlayer.Name) lives: \(firstPlayer.Lives) and \(secondPlayer.Name) lives: \(secondPlayer.Lives)")
             }
             
         case 4:
@@ -102,15 +100,15 @@ func playGame (#firstPlayer: Player, #secondPlayer: Player) {
             println("\(firstPlayer.Name) said: \(player1Answer)")
             println("The correct answer is: \(correctAnswer)")
             if Float(player1Answer) != correctAnswer {
-                p1lives -= 1
-                println("CURRENT SCORE: \(firstPlayer.Name) lives: \(p1lives) and \(secondPlayer.Name) lives: \(p2lives)")
+                firstPlayer.Lives -= 1
+                println("CURRENT SCORE: \(firstPlayer.Name) lives: \(firstPlayer.Lives) and \(secondPlayer.Name) lives: \(secondPlayer.Lives)")
             }
             
         default:
             println("something is wrong")
         }
         
-        if p1lives == 0 {
+        if firstPlayer.Lives == 0 {
             println("Player 2: \(secondPlayer.Name) Wins!!!")
             break
         }
@@ -127,10 +125,10 @@ func playGame (#firstPlayer: Player, #secondPlayer: Player) {
         println("\(secondPlayer.Name) said: \(player2Answer)")
         println("The correct answer is: \(correctAnswerPlayer2)")
         if player2Answer != correctAnswerPlayer2 {
-            p2lives -= 1
-            println("CURRENT SCORE: \(firstPlayer.Name) lives: \(p1lives) and \(secondPlayer.Name) lives: \(p1lives)")
+            secondPlayer.Lives -= 1
+            println("CURRENT SCORE: \(firstPlayer.Name) lives: \(firstPlayer.Lives) and \(secondPlayer.Name) lives: \(secondPlayer.Lives)")
         }
-        if p2lives == 0 {
+        if secondPlayer.Lives == 0 {
             println("Player 1: \(firstPlayer.Name) Wins!!!")
             break
         }
@@ -145,11 +143,20 @@ func playGame (#firstPlayer: Player, #secondPlayer: Player) {
 
 
 // MARK: Play Game with different player names
+// Setup Game 1
 
+var firstPlayer = Player(Name: "Mike", Lives: 3)
+var secondPlayer = Player(Name: "Felix", Lives: 3)
 
-playGame(firstPlayer: Player(Name: "Mike", Lives: 3), secondPlayer: Player(Name: "Felix", Lives: 3))
+playGame(firstPlayer: &firstPlayer, secondPlayer: &secondPlayer)
 
-playGame(firstPlayer: Player(Name: "Sonja", Lives: 3), secondPlayer: Player(Name: "Luka", Lives: 3))
+// Setup Game 2
+
+firstPlayer = Player(Name: "Sonja", Lives: 3)
+secondPlayer = Player(Name: "Michelle", Lives: 3)
+
+playGame(firstPlayer: &firstPlayer, secondPlayer: &secondPlayer)
+
 
 // Major Changes: Break playgame() into smaller functions, so that you can guess numbers and loose lives if right/wrong
 
